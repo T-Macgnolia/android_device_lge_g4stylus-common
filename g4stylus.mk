@@ -50,10 +50,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/touch_dev.idc:system/usr/idc/touch_dev.idc
 
-# Lights
-PRODUCT_PACKAGES += \
-    lights.msm8916
-
 # Media
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml

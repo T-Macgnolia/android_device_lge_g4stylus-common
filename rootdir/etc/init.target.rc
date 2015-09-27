@@ -182,6 +182,14 @@ on boot
     chmod 0440 /sys/devices/virtual/input/lge_proximity/ch0data
     chmod 0440 /sys/devices/virtual/input/lge_proximity/ch1data
 
+    # LED pattern
+    chown system system /sys/class/leds/red/pattern_id
+    chmod 0664 /sys/class/leds/red/pattern_id
+    chown system system /sys/class/leds/red/timed
+    chmod 0664 /sys/class/leds/red/timed
+    chown system system /sys/class/leds/red/time_on_off
+    chmod 0664 /sys/class/leds/red/time_on_off
+
 # Charger
 on charger
    write /sys/class/android_usb/android0/enable 0
