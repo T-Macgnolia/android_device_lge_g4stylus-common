@@ -20,6 +20,7 @@ LOCAL_PATH := device/lge/g4stylus-common
 
 # Kernel
 BOARD_KERNEL_CMDLINE += vmalloc=508m
+TARGET_KERNEL_SOURCE := kernel/lge/msm8916
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
