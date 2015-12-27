@@ -14,13 +14,27 @@
 # limitations under the License.
 
 # inherit from common msm8916
--include device/lge/msm8916-common/BoardConfigCommon.mk
+-include device/cyanogen/msm8916-common/BoardConfigCommon.mk
 
 LOCAL_PATH := device/lge/g4stylus-common
 
 # Kernel
-BOARD_KERNEL_CMDLINE += vmalloc=508m
+BOARD_KERNEL_CMDLINE := vmalloc=508m
 TARGET_KERNEL_SOURCE := kernel/lge/msm8916
+BOARD_RAMDISK_OFFSET := 0x2000000
+BOARD_KERNEL_TAGS_OFFSET := 
+
+# Malloc
+MALLOC_IMPL := dlmalloc
+
+# Offmode Charging
+COMMON_GLOBAL_CFLAGS += \
+    -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' \
+    -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
+
+# Partitions
+BOARD_FLASH_BLOCK_SIZE := 131072
+COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
@@ -29,6 +43,7 @@ TARGET_PROVIDES_LIBLIGHT := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
 TARGET_RECOVERY_FSTAB := device/lge/g4stylus-common/rootdir/etc/fstab.qcom
 
-# SELinux
-#BOARD_SEPOLICY_DIRS += device/lge/g4stylus-common/sepolicy
-#BOARD_SEPOLICY_UNION += \
+# Radio
+BOARD_RIL_CLASS := ../../../device/lge/g4stylus-common/ril/
+TARGET_RELEASE_CPPFLAGS += -DNEEDS_LGE_RIL_SYMBOLS
+

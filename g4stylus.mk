@@ -19,6 +19,11 @@ $(call inherit-product-if-exists, vendor/lge/g4stylus-common/g4stylus-common-ven
 # Overlay
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
+
 # Screen density
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
@@ -40,7 +45,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Audio configuration
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/configs/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/configs/audio_policy.conf:system/etc/audio_policy.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
@@ -48,7 +54,8 @@ PRODUCT_COPY_FILES += \
 
 # Keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/idc/touch_dev.idc:system/usr/idc/touch_dev.idc
+    $(LOCAL_PATH)/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
+    $(LOCAL_PATH)/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 # Lights
 PRODUCT_PACKAGES += \
@@ -58,13 +65,28 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
+# Qualcomm
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml \
+    $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml
+
+#Ril
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/set-baseband:system/bin/set-baseband
+
 # Thermal
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-8916.conf:system/etc/thermal-engine-8916.conf
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    device/lge/g4stylus-common/wcnss/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin
+    device/lge/msm8916-common/wcnss/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/lge/msm8916-common/wcnss/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
+    device/lge/msm8916-common/wcnss/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/lge/g4stylus-common/wcnss/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    device/lge/msm8916-common/wcnss/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+
 
 # common msm8916
-$(call inherit-product, device/lge/msm8916-common/msm8916.mk)
+$(call inherit-product, device/cyanogen/msm8916-common/msm8916.mk)
