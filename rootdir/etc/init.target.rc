@@ -27,7 +27,7 @@
 #
 #
 
-on boot
+on init
 
     # START touch_driver
     chown system system /sys/devices/virtual/input/lge_touch/lpwg_data
@@ -51,6 +51,7 @@ on boot
     chown system system /sys/devices/virtual/input/lge_touch/use_quick_window
     chmod 664 /sys/devices/virtual/input/lge_touch/use_quick_window
 
+on boot
     # LGE BMA2X2 Sensor
     chown system input /sys/devices/virtual/input/lge_accelerometer/SleepDur
     chown system input /sys/devices/virtual/input/lge_accelerometer/bandwidth
@@ -112,10 +113,14 @@ on boot
     chown system input /sys/devices/virtual/input/lge_magnetometer/rept_z
     chown system input /sys/devices/virtual/input/lge_magnetometer/test
     chown system input /sys/devices/virtual/input/lge_accelerometer/fast_calibration_result
-    chown system input /sys/devices/virtual/input/lge_proximity/bright_threshold
-    chown system input /sys/devices/virtual/input/lge_proximity/dark_threshold
-    chown system input /sys/devices/virtual/input/lge_proximity/ch0data
-    chown system input /sys/devices/virtual/input/lge_proximity/ch1data
+    chown system input /sys/devices/virtual/input/lge_light/enable
+    chown system input /sys/devices/virtual/input/lge_light/ch0data
+    chown system input /sys/devices/virtual/input/lge_light/ch1data
+    chown system input /sys/devices/virtual/input/lge_light/name
+    chown system input /sys/devices/virtual/input/lge_light/phys
+    chown system input /sys/devices/virtual/input/lge_light/properties
+    chown system input /sys/devices/virtual/input/lge_light/value
+    chown system input /sys/devices/virtual/input/lge_light/poll_delay
 
     chmod 0660 /sys/devices/virtual/input/lge_accelerometer/SleepDur
     chmod 0660 /sys/devices/virtual/input/lge_accelerometer/bandwidth
@@ -177,10 +182,14 @@ on boot
     chmod 0660 /sys/devices/virtual/input/lge_magnetometer/rept_z
     chmod 0660 /sys/devices/virtual/input/lge_magnetometer/test
     chmod 0660 /sys/devices/virtual/input/lge_accelerometer/fast_calibration_result
-    chmod 0660 /sys/devices/virtual/input/lge_proximity/bright_threshold
-    chmod 0660 /sys/devices/virtual/input/lge_proximity/dark_threshold
-    chmod 0440 /sys/devices/virtual/input/lge_proximity/ch0data
-    chmod 0440 /sys/devices/virtual/input/lge_proximity/ch1data
+    chmod 0660 /sys/devices/virtual/input/lge_light/enable
+    chmod 0440 /sys/devices/virtual/input/lge_light/ch0data
+    chmod 0440 /sys/devices/virtual/input/lge_light/ch1data
+    chmod 0440 /sys/devices/virtual/input/lge_light/name
+    chmod 0440 /sys/devices/virtual/input/lge_light/phys
+    chmod 0440 /sys/devices/virtual/input/lge_light/properties
+    chmod 0660 /sys/devices/virtual/input/lge_light/value
+    chmod 0660 /sys/devices/virtual/input/lge_light/poll_delay
 
     # LED pattern
     chown system system /sys/class/leds/red/pattern_id

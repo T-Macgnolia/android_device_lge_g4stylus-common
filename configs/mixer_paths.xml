@@ -335,6 +335,14 @@
         <path name="voice-call bt-sco" />
     </path>
 
+    <path name="voice-call bt-sco-and-speaker">
+        <path name="voice-call bt-sco" />
+    </path>
+
+    <path name="voice-call bt-sco-wb-and-speaker">
+        <path name="voice-call bt-sco-wb" />
+    </path>
+
     <path name="voice-call usb-headphones">
         <ctl name="AFE_PCM_RX_Voice Mixer CSVoice" value="1" />
         <ctl name="Voice_Tx Mixer AFE_PCM_TX_Voice" value="1" />
@@ -634,15 +642,15 @@
 
     <path name="voice-headset-mic">
         <path name="headset-mic" />
-        <ctl name="ADC2 Volume" value="6" /> 
+        <ctl name="ADC2 Volume" value="8" />
         <ctl name="DEC2 Volume" value="84" />
     </path>
 
     <path name="speaker-and-headphones">
         <path name="headphones" />
         <path name="speaker" />
-        <ctl name="RX1 Digital Volume" value="68" />
-        <ctl name="RX2 Digital Volume" value="68" />
+        <ctl name="RX1 Digital Volume" value="65" />
+        <ctl name="RX2 Digital Volume" value="65" />
         <ctl name="RX3 Digital Volume" value="82" />
     </path>
 
@@ -661,7 +669,7 @@
     <path name="loopback-earpiece">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RDAC2 MUX" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="94" />
+        <ctl name="RX1 Digital Volume" value="91" />
         <ctl name="EAR_S" value="Switch" />
     </path>
 
@@ -686,13 +694,15 @@
     <path name="loopback-handset-mic">
         <path name="adc1" />
         <ctl name="DEC1 Volume" value="91" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
 
     <path name="loopback-speaker-mic">
         <path name="adc3" />
         <ctl name="ADC2 MUX" value="INP3" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="DEC1 Volume" value="80" />
+        <ctl name="DEC1 Volume" value="87" />
+        <ctl name="ADC3 Volume" value="6" />
     </path>
 
     <path name="loopback-headset-mic">
@@ -739,6 +749,7 @@
     <path name="camcorder-mic">
         <path name="adc1" />
         <ctl name="DEC1 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
 
     <path name="bt-sco-headset">
@@ -768,28 +779,30 @@
     <path name="voice-memo-8K">
         <path name="adc1" />
         <ctl name="DEC1 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
 
     <path name="voice-memo">
         <path name="adc1" />
         <ctl name="DEC1 Volume" value="84" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
 
     <path name="headset-voice-memo-8k">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="DEC1 Volume" value="84" />
+        <ctl name="DEC1 Volume" value="87" />
     </path>
 
     <path name="headset-voice-memo">
         <path name="adc2" />
         <ctl name="ADC2 MUX" value="INP2" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
-        <ctl name="DEC1 Volume" value="84" />
+        <ctl name="DEC1 Volume" value="87" />
     </path>
 
-    <!-- Dual MIC devices -->
+    <!-- Dual MIC devices : NXP_TEST-->
     <path name="speaker-dmic-endfire">
         <ctl name="DEC1 MUX" value="ADC1" />
         <ctl name="DEC2 MUX" value="ADC3" />
@@ -887,6 +900,7 @@
 
     <path name="voice-tty-vco-handset-mic">
         <path name="handset-mic" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
 
     <path name="ADSP testfwk">
@@ -940,7 +954,7 @@
 
     <path name="handset-vc">
         <path name="handset" />
-        <ctl name="RX1 Digital Volume" value="60" />
+        <ctl name="RX1 Digital Volume" value="84" />
         <ctl name="EAR PA Gain" value="POS_6_DB" />
     </path>
 
@@ -1098,6 +1112,7 @@
     <!--
     <path name="submic-2">
         <path name="adc1" />
+        <ctl name="ADC1 Volume" value="6" />
     </path>
     -->
 
@@ -1156,6 +1171,7 @@
     -->
 
     <path name="mictest-handset-mic">
+        <path name="handset-mic"/>
     </path>
 
     <path name="mictest-submic1">
@@ -1198,6 +1214,9 @@
 
     <path name="voip-speaker-mic">
         <path name="speaker-mic" />
+	<ctl name="DEC1 Volume" value="87" />
+	<ctl name="ADC3 Volume" value="8" />
+		
     </path>
 
     <path name="voip-speaker-dmic-ef">
@@ -1210,6 +1229,8 @@
 
     <path name="voip-handset-mic">
         <path name="handset-mic" />
+	<ctl name="DEC1 Volume" value="84" />
+	<ctl name="ADC1 Volume" value="8" />
     </path>
 
     <path name="voip-dmic-ef">
@@ -1218,6 +1239,8 @@
 
     <path name="voip-headset-mic">
         <path name="headset-mic" />
+	<ctl name="DEC1 Volume" value="84" />
+	<ctl name="ADC2 Volume" value="8" />
     </path>
 
 </mixer>
